@@ -3,105 +3,271 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f7fb;
     margin: 0;
-    padding: 0;
-    color: #1f2937;
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    color: #1e293b;
 }
 
-.container {
+/* =========================
+   PAGE
+========================= */
+
+.page {
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+#homePage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef4ff, #f8fbff);
+}
+
+.home-container {
     width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 1100px;
+    text-align: center;
 }
 
-h1 {
-    text-align: center;
-    color: #1e3a8a;
-    margin-bottom: 8px;
-    font-size: 36px;
+.home-container h1 {
+    font-size: 46px;
+    margin-bottom: 12px;
+    color: #173b8f;
 }
 
-.subtitle {
-    text-align: center;
+.home-subtitle {
+    font-size: 18px;
     color: #64748b;
-    margin-bottom: 35px;
-    font-size: 16px;
+    margin-bottom: 55px;
 }
 
-.form-card {
+.home-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.main-button {
+    min-height: 220px;
+    border: none;
+    border-radius: 18px;
     background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    margin-bottom: 35px;
-}
-
-.form-card h2 {
-    margin-top: 0;
+    box-shadow: 0 8px 30px rgba(30, 64, 175, 0.12);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
     color: #1e3a8a;
 }
+
+.main-button:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(30, 64, 175, 0.20);
+}
+
+.main-button span {
+    font-size: 45px;
+    margin-bottom: 18px;
+}
+
+.main-button strong {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.main-button small {
+    font-size: 14px;
+    color: #64748b;
+}
+
+
+/* =========================
+   CONTENT PAGES
+========================= */
+
+.content-container {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 35px 0 60px;
+}
+
+.back-button {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.form-card,
+.search-card,
+.show-card {
+    background: white;
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.form-card h1,
+.search-card h1,
+.show-card h1 {
+    color: #173b8f;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.section-description {
+    color: #64748b;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   CREATE FORM
+========================= */
 
 form {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 25px;
 }
 
-input,
-select {
+form label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #334155;
+}
+
+form input,
+form select {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     border: 1px solid #cbd5e1;
-    border-radius: 7px;
+    border-radius: 8px;
     font-size: 15px;
     background: white;
 }
 
-input:focus,
-select:focus {
+form input:focus,
+form select:focus {
     outline: none;
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
 }
 
-form button {
-    padding: 12px 18px;
+.save-button {
+    grid-column: span 2;
+    padding: 14px;
     border: none;
-    border-radius: 7px;
+    border-radius: 8px;
     background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background: #1d4ed8;
+}
+
+.cancel-button {
+    grid-column: span 2;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #64748b;
     color: white;
     font-size: 15px;
     cursor: pointer;
 }
 
-form button:hover {
-    background: #1d4ed8;
-}
-
-#cancelButton {
-    background: #64748b;
-}
-
-#cancelButton:hover {
+.cancel-button:hover {
     background: #475569;
 }
 
-.student-section {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
 }
 
-.student-section h2 {
-    margin-top: 0;
-    color: #1e3a8a;
+.search-box input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-#searchInput {
-    margin-bottom: 20px;
+.search-box input:focus {
+    outline: none;
+    border-color: #2563eb;
 }
+
+.search-box button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   STUDENT COUNT
+========================= */
+
+.student-count {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1e40af;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
 
 .table-container {
     overflow-x: auto;
@@ -110,6 +276,7 @@ form button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 750px;
 }
 
 thead {
@@ -118,52 +285,117 @@ thead {
 }
 
 th {
-    padding: 14px;
+    padding: 15px;
     text-align: center;
+    font-size: 14px;
 }
 
 td {
-    padding: 13px;
+    padding: 14px;
     text-align: center;
     border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
 }
 
 tbody tr:hover {
     background: #f8fafc;
 }
 
-td button {
-    padding: 8px 12px;
-    margin: 2px;
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.edit-button,
+.delete-button {
     border: none;
-    border-radius: 5px;
-    background: #2563eb;
+    padding: 8px 13px;
+    border-radius: 6px;
     color: white;
     cursor: pointer;
+    font-size: 13px;
+    margin: 2px;
 }
 
-td button:hover {
-    opacity: 0.85;
+.edit-button {
+    background: #2563eb;
 }
 
-@media (max-width: 700px) {
+.edit-button:hover {
+    background: #1d4ed8;
+}
 
-    .container {
-        width: 95%;
-        margin: 20px auto;
+.delete-button {
+    background: #dc2626;
+}
+
+.delete-button:hover {
+    background: #b91c1c;
+}
+
+
+/* =========================
+   EMPTY MESSAGE
+========================= */
+
+.empty-message {
+    text-align: center;
+    padding: 40px;
+    color: #64748b;
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .home-container h1 {
+        font-size: 32px;
     }
 
-    h1 {
-        font-size: 28px;
+    .home-subtitle {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+
+    .home-buttons {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .main-button {
+        min-height: 160px;
+    }
+
+    .content-container {
+        width: 94%;
+        padding-top: 20px;
+    }
+
+    .form-card,
+    .search-card,
+    .show-card {
+        padding: 22px;
     }
 
     form {
         grid-template-columns: 1fr;
     }
 
-    th,
-    td {
-        font-size: 13px;
-        padding: 9px;
+    .save-button,
+    .cancel-button {
+        grid-column: span 1;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box button {
+        width: 100%;
     }
 }
