@@ -12,140 +12,39 @@
 
 <body>
 
-    <div class="container">
+    <!-- HOME PAGE -->
 
-        <h1>Student Management System</h1>
+    <div id="homePage" class="page">
 
-        <p class="subtitle">
-            Manage student records easily
-        </p>
+        <div class="home-container">
 
+            <h1>Student Management System</h1>
 
-        <!-- Add Student Form -->
+            <p class="home-subtitle">
+                Manage student records easily and efficiently
+            </p>
 
-        <div class="form-card">
+            <div class="home-buttons">
 
-            <h2 id="formTitle">Add Student</h2>
-
-            <form id="studentForm">
-
-                <input
-                    type="text"
-                    id="studentId"
-                    placeholder="Student ID"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="studentName"
-                    placeholder="Student Name"
-                    required
-                >
-
-                <input
-                    type="email"
-                    id="studentEmail"
-                    placeholder="Email"
-                    required
-                >
-
-                <select id="studentDepartment" required>
-
-                    <option value="">Select Department</option>
-
-                    <option value="CSE">CSE</option>
-
-                    <option value="IT">IT</option>
-
-                    <option value="ECE">ECE</option>
-
-                    <option value="EEE">EEE</option>
-
-                    <option value="MECH">MECH</option>
-
-                    <option value="CIVIL">CIVIL</option>
-
-                </select>
-
-
-                <select id="studentYear" required>
-
-                    <option value="">Select Year</option>
-
-                    <option value="1">1st Year</option>
-
-                    <option value="2">2nd Year</option>
-
-                    <option value="3">3rd Year</option>
-
-                    <option value="4">4th Year</option>
-
-                </select>
-
-
-                <button type="submit">
-                    Save Student
+                <button onclick="showPage('createPage')" class="main-button">
+                    <span>➕</span>
+                    <strong>CREATE</strong>
+                    <small>Add a new student</small>
                 </button>
 
-                <button
-                    type="button"
-                    id="cancelButton"
-                    onclick="cancelEdit()"
-                    style="display: none;"
-                >
-                    Cancel
+
+                <button onclick="showPage('searchPage')" class="main-button">
+                    <span>🔍</span>
+                    <strong>SEARCH</strong>
+                    <small>Find a student</small>
                 </button>
 
-            </form>
 
-        </div>
-
-
-        <!-- Student List -->
-
-        <div class="student-section">
-
-            <h2>Students</h2>
-
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search by ID, name, email or department..."
-                onkeyup="searchStudents()"
-            >
-
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Student ID</th>
-
-                            <th>Name</th>
-
-                            <th>Email</th>
-
-                            <th>Department</th>
-
-                            <th>Year</th>
-
-                            <th>Actions</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="studentTableBody">
-                    </tbody>
-
-                </table>
+                <button onclick="showPage('showPage')" class="main-button">
+                    <span>👥</span>
+                    <strong>SHOW</strong>
+                    <small>View all students</small>
+                </button>
 
             </div>
 
@@ -153,6 +52,237 @@
 
     </div>
 
+
+    <!-- CREATE PAGE -->
+
+    <div id="createPage" class="page hidden">
+
+        <div class="content-container">
+
+            <button class="back-button" onclick="showPage('homePage')">
+                ← Back to Home
+            </button>
+
+            <div class="form-card">
+
+                <h1 id="formTitle">Create Student</h1>
+
+                <p class="section-description">
+                    Enter the student details below
+                </p>
+
+                <form id="studentForm">
+
+                    <label>Student ID</label>
+
+                    <input
+                        type="text"
+                        id="studentId"
+                        placeholder="Enter Student ID"
+                        required
+                    >
+
+
+                    <label>Student Name</label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter Student Name"
+                        required
+                    >
+
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="studentEmail"
+                        placeholder="Enter Email"
+                        required
+                    >
+
+
+                    <label>Department</label>
+
+                    <select id="studentDepartment" required>
+
+                        <option value="">Select Department</option>
+
+                        <option value="CSE">CSE</option>
+
+                        <option value="IT">IT</option>
+
+                        <option value="ECE">ECE</option>
+
+                        <option value="EEE">EEE</option>
+
+                        <option value="MECH">MECH</option>
+
+                        <option value="CIVIL">CIVIL</option>
+
+                    </select>
+
+
+                    <label>Year</label>
+
+                    <select id="studentYear" required>
+
+                        <option value="">Select Year</option>
+
+                        <option value="1">1st Year</option>
+
+                        <option value="2">2nd Year</option>
+
+                        <option value="3">3rd Year</option>
+
+                        <option value="4">4th Year</option>
+
+                    </select>
+
+
+                    <button type="submit" class="save-button">
+                        CREATE STUDENT
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="cancel-button"
+                        onclick="cancelEdit()"
+                        style="display:none;"
+                    >
+                        CANCEL
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH PAGE -->
+
+    <div id="searchPage" class="page hidden">
+
+        <div class="content-container">
+
+            <button class="back-button" onclick="showPage('homePage')">
+                ← Back to Home
+            </button>
+
+            <div class="search-card">
+
+                <h1>Search Students</h1>
+
+                <p class="section-description">
+                    Search student records using ID, name, email or department
+                </p>
+
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search student..."
+                        onkeyup="searchStudents()"
+                    >
+
+                    <button onclick="searchStudents()">
+                        🔍 Search
+                    </button>
+
+                </div>
+
+
+                <div id="searchResults" class="results">
+
+                    <p class="empty-message">
+                        Enter something to search for students.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SHOW PAGE -->
+
+    <div id="showPage" class="page hidden">
+
+        <div class="content-container">
+
+            <button class="back-button" onclick="showPage('homePage')">
+                ← Back to Home
+            </button>
+
+            <div class="show-card">
+
+                <h1>All Students</h1>
+
+                <p class="section-description">
+                    View all registered student records
+                </p>
+
+
+                <div class="student-count">
+
+                    Total Students:
+                    <strong id="totalStudents">0</strong>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student ID</th>
+
+                                <th>Name</th>
+
+                                <th>Email</th>
+
+                                <th>Department</th>
+
+                                <th>Year</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="studentTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
 
     <script>
 
@@ -162,76 +292,50 @@
         let editingIndex = -1;
 
 
-        // Display students
+        // PAGE NAVIGATION
 
-        function displayStudents(studentList = students) {
+        function showPage(pageId) {
 
-            const tableBody =
-                document.getElementById("studentTableBody");
+            const pages =
+                document.querySelectorAll(".page");
 
-            tableBody.innerHTML = "";
+            pages.forEach(page => {
+
+                page.classList.add("hidden");
+
+            });
 
 
-            if (studentList.length === 0) {
+            document
+                .getElementById(pageId)
+                .classList.remove("hidden");
 
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="6">
-                            No students found
-                        </td>
-                    </tr>
-                `;
 
-                return;
+            if (pageId === "showPage") {
+
+                displayStudents();
+
             }
 
 
-            studentList.forEach(student => {
+            if (pageId === "searchPage") {
 
-                const originalIndex =
-                    students.findIndex(
-                        s => s.studentId === student.studentId
-                    );
+                document.getElementById("searchInput").value = "";
 
+                document.getElementById("searchResults").innerHTML = `
 
-                tableBody.innerHTML += `
-
-                    <tr>
-
-                        <td>${student.studentId}</td>
-
-                        <td>${student.name}</td>
-
-                        <td>${student.email}</td>
-
-                        <td>${student.department}</td>
-
-                        <td>${student.year}</td>
-
-                        <td>
-
-                            <button
-                                onclick="editStudent(${originalIndex})"
-                            >
-                                Edit
-                            </button>
-
-                            <button
-                                onclick="deleteStudent(${originalIndex})"
-                            >
-                                Delete
-                            </button>
-
-                        </td>
-
-                    </tr>
+                    <p class="empty-message">
+                        Enter something to search for students.
+                    </p>
 
                 `;
-            });
+
+            }
+
         }
 
 
-        // Add / Update student
+        // CREATE / UPDATE STUDENT
 
         document
             .getElementById("studentForm")
@@ -284,10 +388,11 @@
                     alert("Please fill all fields.");
 
                     return;
+
                 }
 
 
-                // Check duplicate Student ID
+                // DUPLICATE ID CHECK
 
                 const duplicate =
                     students.some(
@@ -302,6 +407,7 @@
                     alert("Student ID already exists.");
 
                     return;
+
                 }
 
 
@@ -320,7 +426,7 @@
                 };
 
 
-                // Update
+                // UPDATE
 
                 if (editingIndex !== -1) {
 
@@ -331,27 +437,28 @@
 
                 }
 
-                // Add
+
+                // CREATE
 
                 else {
 
                     students.push(studentData);
 
-                    alert("Student added successfully!");
+                    alert("Student created successfully!");
 
                 }
 
 
                 saveStudents();
 
-                displayStudents();
-
                 resetForm();
+
+                showPage("showPage");
 
             });
 
 
-        // Save to localStorage
+        // SAVE DATA
 
         function saveStudents() {
 
@@ -359,81 +466,101 @@
                 "students",
                 JSON.stringify(students)
             );
+
         }
 
 
-        // Edit student
+        // DISPLAY STUDENTS
 
-        function editStudent(index) {
+        function displayStudents(studentList = students) {
 
-            const student = students[index];
-
-            editingIndex = index;
-
-
-            document.getElementById("studentId").value =
-                student.studentId;
-
-            document.getElementById("studentName").value =
-                student.name;
-
-            document.getElementById("studentEmail").value =
-                student.email;
-
-            document.getElementById("studentDepartment").value =
-                student.department;
-
-            document.getElementById("studentYear").value =
-                student.year;
+            const tableBody =
+                document.getElementById("studentTableBody");
 
 
-            document.getElementById("formTitle").textContent =
-                "Edit Student";
+            const totalStudents =
+                document.getElementById("totalStudents");
 
 
-            document.getElementById("studentId").disabled =
-                true;
+            tableBody.innerHTML = "";
 
 
-            document.getElementById("cancelButton").style.display =
-                "inline-block";
+            totalStudents.textContent =
+                studentList.length;
 
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
+            if (studentList.length === 0) {
 
+                tableBody.innerHTML = `
 
-        // Delete student
+                    <tr>
 
-        function deleteStudent(index) {
+                        <td colspan="6">
+                            No students found
+                        </td>
 
-            const student =
-                students[index];
+                    </tr>
 
+                `;
 
-            if (
-                confirm(
-                    "Are you sure you want to delete " +
-                    student.name +
-                    "?"
-                )
-            ) {
+                return;
 
-                students.splice(index, 1);
-
-                saveStudents();
-
-                displayStudents();
-
-                alert("Student deleted successfully!");
             }
+
+
+            studentList.forEach(student => {
+
+                const originalIndex =
+                    students.findIndex(
+                        s =>
+                            s.studentId ===
+                            student.studentId
+                    );
+
+
+                tableBody.innerHTML += `
+
+                    <tr>
+
+                        <td>${student.studentId}</td>
+
+                        <td>${student.name}</td>
+
+                        <td>${student.email}</td>
+
+                        <td>${student.department}</td>
+
+                        <td>${student.year}</td>
+
+                        <td>
+
+                            <button
+                                class="edit-button"
+                                onclick="editStudent(${originalIndex})"
+                            >
+                                Edit
+                            </button>
+
+
+                            <button
+                                class="delete-button"
+                                onclick="deleteStudent(${originalIndex})"
+                            >
+                                Delete
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
+
         }
 
 
-        // Search students
+        // SEARCH STUDENTS
 
         function searchStudents() {
 
@@ -443,6 +570,25 @@
                     .value
                     .toLowerCase()
                     .trim();
+
+
+            const results =
+                document.getElementById("searchResults");
+
+
+            if (searchValue === "") {
+
+                results.innerHTML = `
+
+                    <p class="empty-message">
+                        Enter something to search for students.
+                    </p>
+
+                `;
+
+                return;
+
+            }
 
 
             const filteredStudents =
@@ -473,19 +619,170 @@
                 );
 
 
-            displayStudents(filteredStudents);
+            if (filteredStudents.length === 0) {
+
+                results.innerHTML = `
+
+                    <p class="empty-message">
+                        No students found.
+                    </p>
+
+                `;
+
+                return;
+
+            }
+
+
+            results.innerHTML = `
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Name</th>
+
+                                <th>Email</th>
+
+                                <th>Department</th>
+
+                                <th>Year</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            ${filteredStudents.map(student => `
+
+                                <tr>
+
+                                    <td>${student.studentId}</td>
+
+                                    <td>${student.name}</td>
+
+                                    <td>${student.email}</td>
+
+                                    <td>${student.department}</td>
+
+                                    <td>${student.year}</td>
+
+                                </tr>
+
+                            `).join("")}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            `;
+
         }
 
 
-        // Cancel edit
+        // EDIT STUDENT
+
+        function editStudent(index) {
+
+            const student =
+                students[index];
+
+
+            editingIndex = index;
+
+
+            document.getElementById("studentId").value =
+                student.studentId;
+
+
+            document.getElementById("studentName").value =
+                student.name;
+
+
+            document.getElementById("studentEmail").value =
+                student.email;
+
+
+            document.getElementById("studentDepartment").value =
+                student.department;
+
+
+            document.getElementById("studentYear").value =
+                student.year;
+
+
+            document.getElementById("studentId").disabled =
+                true;
+
+
+            document.getElementById("formTitle").textContent =
+                "Edit Student";
+
+
+            document.getElementById("cancelButton").style.display =
+                "block";
+
+
+            showPage("createPage");
+
+        }
+
+
+        // DELETE STUDENT
+
+        function deleteStudent(index) {
+
+            const student =
+                students[index];
+
+
+            const confirmation =
+                confirm(
+                    "Are you sure you want to delete " +
+                    student.name +
+                    "?"
+                );
+
+
+            if (!confirmation) {
+
+                return;
+
+            }
+
+
+            students.splice(index, 1);
+
+            saveStudents();
+
+            displayStudents();
+
+            alert("Student deleted successfully!");
+
+        }
+
+
+        // CANCEL EDIT
 
         function cancelEdit() {
 
             resetForm();
+
+            showPage("showPage");
+
         }
 
 
-        // Reset form
+        // RESET FORM
 
         function resetForm() {
 
@@ -497,22 +794,23 @@
             editingIndex = -1;
 
 
-            document.getElementById("formTitle").textContent =
-                "Add Student";
-
-
             document.getElementById("studentId").disabled =
                 false;
 
 
+            document.getElementById("formTitle").textContent =
+                "Create Student";
+
+
             document.getElementById("cancelButton").style.display =
                 "none";
+
         }
 
 
-        // Load students when page opens
+        // INITIAL PAGE
 
-        displayStudents();
+        showPage("homePage");
 
     </script>
 
